@@ -1,0 +1,31 @@
+Aluminum Can  alumni
+Aluminum Foil
+Steel Can
+Tin Can
+Jar
+Jug
+Bottle
+Rigid Plastic
+Magazines
+Books
+Mixed Paper
+Paper bags
+Newspaper
+Phone books
+Paper Carton
+Corrugated Cardboard
+Car Battery
+Button Battery
+Household Battery
+Rechargable Battery
+Glass Jar
+Glass Bottle
+Incandescent Bulb
+LED Bulb
+Flurescent Bulb
+Television
+Monitor
+Laptop
+Desktop
+Cell Phone
+Microwave
