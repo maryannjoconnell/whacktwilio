@@ -196,5 +196,37 @@ BEGIN
 END$$
 DELIMITER ;
 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_electronic`(
+    IN p_electronic_id INT(6),
+    IN p_television TINYINT(1),
+    IN p_monitor TINYINT(1),
+    IN p_laptop TINYINT(1),
+    IN p_desktop TINYINT(1),
+    IN p_cell_phone TINYINT(1),
+    IN p_microwave TINYINT(1)
+)
+BEGIN
+    insert into electronic (
+        electronic_id,
+        television,
+        monitor,
+        laptop,
+        desktop,
+        cell_phone,
+        microwave
+    )
+    values (
+        p_electronic_id,
+        p_television,
+        p_monitor,
+        p_laptop,
+        p_desktop,
+        p_cell_phone,
+        p_microwave
+    );
+END$$
+DELIMITER ;
+
 
 SHOW PROCEDURE STATUS WHERE Db = DATABASE();
