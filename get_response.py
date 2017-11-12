@@ -31,60 +31,76 @@ def get_responsev2(message):
     unknownWords = []
 
     if message:
-        message_arr = message.split(" ")
-        if message_arr:
-            # loop through array checking for matching single word item and zipcode
-            for i in range(len(message_arr)):
-                word = message_arr[i]
-                if not foundZip and len(word) == 5 and word.isdigit():
-                    foundZip = True
-                    zipcode = word
-                elif not foundItem and word.isalpha():
-                    # check our list of items
-                    foundItem = item_found(word)
-                    if not foundItem :
-                        # record unknown words
-                        unknownWords.append(word)
-                    else:
-                        foundItem = True
-                        item = word
-
-                if foundZip and (foundItem or foundSuggestion):
-                    break
-
-            # skip looking for item if we did not find a zipcode
-            if not foundItem and foundZip:
-                # loop through array checking for matching double word item
-                for i in range(len(message_arr) - 1):
-                    word1 = message_arr[i]
-                    word2 = message_arr[i+1]
-                    word = word1 + word2
-
-                    if word.isalpha():
+        # do not process input exceeding 140 characters
+        if len(message) < 160:
+            message_arr = message.split(" ")
+            if message_arr:
+                # loop through array checking for matching single word item and zipcode
+                for i in range(len(message_arr)):
+                    word = message_arr[i]
+                    if not foundZip and len(word) == 5 and word.isdigit():
+                        foundZip = True
+                        zipcode = word
+                    elif not foundItem and word.isalpha():
                         # check our list of items
                         foundItem = item_found(word)
-                        if (foundItem) :
+                        if not foundItem :
+                            # record unknown words
+                            unknownWords.append(word)
+                        else:
+                            foundItem = True
                             item = word
-                            break
 
-                # if we still didn't find a valid item, look for suggestions if any unknown words were records
-                if not foundItem and len(unknownWords) > 0:
-                        for i in range(len(unknownWords)):
-                            word = unknownWords[i]
-                            suggestedItem = check_dictionary(word)
-                            if suggestedItem:
-                                foundSuggestion = True
+                    if foundZip and (foundItem or foundSuggestion):
+                        break
+
+                # skip looking for item if we did not find a zipcode
+                if not foundItem and foundZip:
+                    # loop through array checking for matching double word item
+                    for i in range(len(message_arr) - 1):
+                        word1 = message_arr[i]
+                        word2 = message_arr[i+1]
+                        word = word1 + word2
+
+                        if word.isalpha():
+                            # check our list of items
+                            foundItem = item_found(word)
+                            if (foundItem) :
+                                item = word
                                 break
 
+                    # if we still didn't find a valid item, look for suggestions if any unknown words were records
+                    if not foundItem and len(unknownWords) > 0:
+                            for i in range(len(unknownWords)):
+                                word = unknownWords[i]
+                                suggestedItem = check_dictionary(word)
+                                if suggestedItem:
+                                    foundSuggestion = True
+                                    break
+
     if foundZip:
-        if foundItem:
-            # get results
-            response = "Results for recycling " + item + " in " + zipcode
-        elif foundSuggestion:
-            response = "We didn't get that. Did you mean to ask about " + suggestedItem + "?"
-        else:
-            response = "All results for " + zipcode
+        #TODO check for zipcode
+        # if we have zip code
+        if True:
+            if foundItem:
+                # TODO get results for found item
+                response = "Results for recycling " + item + " in " + zipcode
+                #if not allowed
+                response = foundItem + "not recyclable curbside - visit earth911 to search for other options: http://search.earth911.com/?what=" + item + "&where=" + zipcode + "&list_filter=all&max_distance=25"
+            elif foundSuggestion:
+                response = "We didn't get that. Did you mean to ask about " + suggestedItem + "?"
+                # TODO get results for suggested item
+                # TODO concat responses
+                #if not allowed
+                response = suggestedItem + "not recyclable curbside - visit earth911 to search for other options: http://search.earth911.com/?what=" + item + "&where=" + zipcode + "&list_filter=all&max_distance=25"
+            else:
+                #TODO get all results - display as short list (or with emojis)
+                response = "Feeling lucky? https://www.google.com/search?btnI=1&q=recycling%20" + zipcode
+        else :
+            # fallback to I'm feeling lucky results
+                response = "Feeling lucky? https://www.google.com/search?btnI=1&q=recycling%20" + zipcode
     elif foundItem:
+        # get tip for item
         response = "Try entering \"" + item + "\" followed by your zip code."
     else:
         response = "Not sure what you mean. Enter your zip code and what you want to recycle."
@@ -116,7 +132,3 @@ def check_dictionary(word):
                 return suggestion
 
     return ""
-
-if __name__ == "__main__":
-    resp = get_responsev2("01810 microawve")
-    print resp
