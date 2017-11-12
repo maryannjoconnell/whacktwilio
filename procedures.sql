@@ -1,14 +1,56 @@
 DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_city`(
+    IN p_city_id INT(6),
+    IN p_name VARCHAR(45),
+    IN p_state VARCHAR(45),
+    IN p_url VARCHAR(200)
+)
+BEGIN
+    insert into city (
+        city_id,
+        name,
+        state,
+        url
+    )
+    values (
+        p_city_id
+        p_name,
+        p_state,
+        p_url
+    );
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_city_metal`(
+    IN p_name VARCHAR(45),
+    IN p_state VARCHAR(45),
+    in p_metal INT(6)
+)
+BEGIN
+
+    UPDATE city SET metal = p_metal WHERE name = p_name AND state = p_state;
+
+END$$
+DELIMITER ;
+
+
+
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `add_postalcode`(
+    IN p_postalcode_id INT(6),
     IN p_city_id INT(6),
     IN p_postalcode INT(5)
 )
 BEGIN
+
     insert into postalcode (
+        postalcode_id,
         city_id,
         postalcode
     )
     values (
+        p_postalcode_id,
         p_city_id,
         p_postalcode
     );
@@ -69,45 +111,6 @@ BEGIN
         p_aluminum_foil,
         p_steel_can,
         p_tin_can
-    );
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `add_city`(
-    IN p_name VARCHAR(45),
-    IN p_state VARCHAR(45),
-    IN p_url VARCHAR(200),
-    IN p_metal INT(6),
-    IN p_paper INT(6),
-    IN p_glass INT(6),
-    IN p_plastic INT(6),
-    IN p_battery INT(6),
-    IN p_bulb INT(6)
-)
-BEGIN
-    insert into city (
-        name,
-        state,
-        url,
-        metal,
-        paper,
-        glass,
-        plastic,
-        battery,
-        bulb,
-        electronic
-    )
-    values (
-        p_name,
-        p_state,
-        p_url,
-        p_metal,
-        p_paper,
-        p_glass,
-        p_plastic,
-        p_battery,
-        p_bulb
     );
 END$$
 DELIMITER ;
