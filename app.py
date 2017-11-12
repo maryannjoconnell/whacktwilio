@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
-from get_response import get_response
+from get_response import get_responsev2
 
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ def sms():
     number = request.form['From']
     message_body = request.form['Body']
 
-    msg = get_response(message_body)
+    msg = get_responsev2(message_body)
     resp = MessagingResponse()
     resp.message(msg)
     return str(resp)
