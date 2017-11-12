@@ -32,19 +32,19 @@ BEGIN
         p_city_id
     );
     
-    insert into metal ( metal_id )
+    insert into metal ( city_id )
     values ( p_city_id );
-    insert into paper ( paper_id )
+    insert into paper ( city_id )
     values ( p_city_id );
-    insert into glass ( glass_id )
+    insert into glass ( city_id )
     values ( p_city_id );
-    insert into plastic ( plastic_id )
+    insert into plastic ( city_id )
     values ( p_city_id );
-    insert into battery ( battery_id )
+    insert into battery ( city_id )
     values ( p_city_id );
-    insert into bulb ( bulb_id )
+    insert into bulb ( city_id )
     values ( p_city_id );
-    insert into electronic ( electronic_id )
+    insert into electronic ( city_id )
     values ( p_city_id );
     
 END$$

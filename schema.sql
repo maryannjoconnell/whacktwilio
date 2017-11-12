@@ -1,3 +1,4 @@
+DROP DATABASE Whack;
 CREATE DATABASE Whack;
 
 CREATE TABLE  Whack.city (
@@ -21,7 +22,7 @@ CREATE TABLE Whack.postalcode (
 );
 
 CREATE TABLE Whack.metal (
-	metal_id INT(6) PRIMARY KEY,
+	city_id INT(6) PRIMARY KEY,
 	aluminum_can TINYINT(1) DEFAULT 0,
 	aluminum_foil TINYINT(1) DEFAULT 0,
 	steel_can TINYINT(1) DEFAULT 0,
@@ -29,7 +30,7 @@ CREATE TABLE Whack.metal (
 );
 
 CREATE TABLE Whack.paper (
-	paper_id INT(6) PRIMARY KEY,
+	city_id INT(6) PRIMARY KEY,
 	magazine TINYINT(1) DEFAULT 0,
 	book TINYINT(1) DEFAULT 0,
 	mixed_paper TINYINT(1) DEFAULT 0,
@@ -41,13 +42,13 @@ CREATE TABLE Whack.paper (
 );
 
 CREATE TABLE Whack.glass (
-	glass_id INT(6) PRIMARY KEY,
+	city_id INT(6) PRIMARY KEY,
 	bottle TINYINT(1) DEFAULT 0,
 	jar TINYINT(1) DEFAULT 0
 );
 
 CREATE TABLE Whack.plastic (
-	plastic_id INT(6) PRIMARY KEY,
+	city_id INT(6) PRIMARY KEY,
 	jar TINYINT(1) DEFAULT 0,
 	jug TINYINT(1) DEFAULT 0,
 	bottle TINYINT(1) DEFAULT 0,
@@ -55,7 +56,7 @@ CREATE TABLE Whack.plastic (
 );
 
 CREATE TABLE Whack.battery (
-	battery_id INT(6) PRIMARY KEY,
+	city_id INT(6) PRIMARY KEY,
 	car TINYINT(1) DEFAULT 0,
 	button TINYINT(1) DEFAULT 0,
 	household TINYINT(1) DEFAULT 0,
@@ -63,14 +64,14 @@ CREATE TABLE Whack.battery (
 );
 
 CREATE TABLE Whack.bulb (
-	bulb_id INT(6) PRIMARY KEY,
+	city_id INT(6) PRIMARY KEY,
 	incandescent TINYINT(1) DEFAULT 0,
 	led TINYINT(1) DEFAULT 0,
 	fluorescent TINYINT(1) DEFAULT 0
 );
 
 CREATE TABLE Whack.electronic (
-	electronic_id INT(6) PRIMARY KEY,
+	city_id INT(6) PRIMARY KEY,
 	television TINYINT(1) DEFAULT 0,
 	monitor TINYINT(1) DEFAULT 0,
 	laptop TINYINT(1) DEFAULT 0,

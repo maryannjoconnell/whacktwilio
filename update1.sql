@@ -272,7 +272,7 @@ update paper set
   phone_book=1,
   paper_carton=1,
   corrugated_cardboard=1
-  where paper_id = 1;
+  where city_id = 1;
 
 # Boston paper
 update paper set
@@ -284,7 +284,7 @@ update paper set
   phone_book=1,
   paper_carton=1,
   corrugated_cardboard=1
-  where paper_id = 2;
+  where city_id = 2;
 
 # NYC paper
   update paper set
@@ -296,7 +296,7 @@ update paper set
   phone_book=1,
   paper_carton=1,
   corrugated_cardboard=1
-  where paper_id = 3;
+  where city_id = 3;
 
 # Philadelphia  paper
   update paper set
@@ -308,7 +308,7 @@ update paper set
   phone_book=1,
   paper_carton=1,
   corrugated_cardboard=1
-  where paper_id = 4;
+  where city_id = 4;
 
   # Wellesley metal
   update metal set
@@ -316,7 +316,7 @@ update paper set
   aluminum_foil=1,
   steel_can=1,
   tin_can=1
-  where metal_id = 1;
+  where city_id = 1;
 
   # Boston metal
   update metal set
@@ -324,7 +324,7 @@ update paper set
   aluminum_foil=1,
   steel_can=1,
   tin_can=1
-  where metal_id = 2;
+  where city_id = 2;
 
   # NYC metal
   update metal set
@@ -332,7 +332,7 @@ update paper set
   aluminum_foil=1,
   steel_can=1,
   tin_can=1
-  where metal_id = 3;
+  where city_id = 3;
 
   # Philadelphia metal
   update metal set
@@ -340,7 +340,7 @@ update paper set
   aluminum_foil=1,
   steel_can=1,
   tin_can=1
-  where metal_id = 4;
+  where city_id = 4;
 
   # Wellesley plastic
   update plastic set
@@ -348,7 +348,7 @@ update paper set
   jug=1,
   bottle=1,
   rigid_plastic=1
-  where plastic_id=1;
+  where city_id=1;
 
   # Boston plastic
   update plastic set
@@ -356,7 +356,7 @@ update paper set
   jug=1,
   bottle=1,
   rigid_plastic=1
-  where plastic_id=2;
+  where city_id=2;
 
   # NYC plastic
   update plastic set
@@ -364,7 +364,7 @@ update paper set
   jug=1,
   bottle=1,
   rigid_plastic=1
-  where plastic_id=3;
+  where city_id=3;
 
   # Philadelphia plastic
   update plastic set
@@ -372,59 +372,59 @@ update paper set
   jug=1,
   bottle=1,
   rigid_plastic=1
-  where plastic_id=4;
+  where city_id=4;
 
   # Wellesley glass
   update glass set
   bottle=1,
   jar=1
-  where glass_id=1;
+  where city_id=1;
 
   # Boston glass
   update glass set
   bottle=1,
   jar=1
-  where glass_id=2;
+  where city_id=2;
 
   # NYC glass
   update glass set
   bottle=1,
   jar=1
-  where glass_id=3;
+  where city_id=3;
 
   # Philadelphia glass
   update glass set
   bottle=1,
   jar=1
-  where glass_id=4;
+  where city_id=4;
 
   # Wellesley bulb
   update bulb set
   incandescent=0,
   led=0,
   fluorescent=0
-  where bulb_id=1;
+  where city_id=1;
 
   # Boston bulb
   update bulb set
   incandescent=0,
   led=0,
   fluorescent=0
-  where bulb_id=2;
+  where city_id=2;
 
   # NYC bulb
   update bulb set
   incandescent=0,
   led=0,
   fluorescent=0
-  where bulb_id=3;
+  where city_id=3;
 
   # Philadelphia bulb
   update bulb set
   incandescent=0,
   led=0,
   fluorescent=0
-  where bulb_id=4;
+  where city_id=4;
 
   # Wellesley electronic
   update electronic set
@@ -434,7 +434,7 @@ update paper set
   desktop=0,
   cell_phone=1,
   microwave=0
-  where electronic_id =1;
+  where city_id =1;
 
   # Boston electronic
   update electronic set
@@ -444,7 +444,7 @@ update paper set
   desktop=0,
   cell_phone=0,
   microwave=0
-  where electronic_id =2;
+  where city_id =2;
 
   # NYC electronic
   update electronic set
@@ -454,7 +454,7 @@ update paper set
   desktop=0,
   cell_phone=0,
   microwave=0
-  where electronic_id =3;
+  where city_id =3;
 
   # Philadelphia electronic
   update electronic set
@@ -464,7 +464,7 @@ update paper set
   desktop=0,
   cell_phone=0,
   microwave=0
-  where electronic_id =4;
+  where city_id =4;
 
   # Wellesley battery
   update battery set
@@ -472,7 +472,7 @@ update paper set
   button=0,
   household=1,
   rechargable=0
-  where battery_id = 1;
+  where city_id = 1;
 
   # Boston battery
   update battery set
@@ -480,7 +480,7 @@ update paper set
   button=0,
   household=0,
   rechargable=0
-  where battery_id = 2;
+  where city_id = 2;
 
   # NYC battery
   update battery set
@@ -488,7 +488,7 @@ update paper set
   button=0,
   household=0,
   rechargable=0
-  where battery_id = 3;
+  where city_id = 3;
 
   # Philadelphia battery
   update battery set
@@ -496,7 +496,7 @@ update paper set
   button=0,
   household=0,
   rechargable=0
-  where battery_id = 4;
+  where city_id = 4;
 
 
 
