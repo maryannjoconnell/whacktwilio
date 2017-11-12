@@ -11,7 +11,22 @@ pip install flask-mysql
 mysql -u root -p
 ```
 
-### See all database columns:
+### See all database info
+```
+use Whack;
+show tables;
+describe city;
+describe postalcode;
+describe metal;
+describe paper;
+describe glass;
+describe plastic;
+describe battery;
+describe bulb;
+describe electronic;
+```
+
+### See all table info:
 ```
 SELECT * FROM city;
 SELECT * FROM metal;
