@@ -1,12 +1,27 @@
 # WHACK
 
-
+## Setup:
+```
+virtualenv env
+cd env/
+source bin/activate
+```
 ### Dependencies to install:
+
 ```
+pip install flask
 pip install flask-mysql
+pip install flask-mysqldb
+pip install twilio
+pip install pyenchant
 ```
 
-### Start sql:
+### To run app:
+```
+python app.py
+```
+
+### To start sql:
 ```
 mysql -u root -p
 ```

@@ -1,8 +1,10 @@
 import os
 import io
 import enchant
-#constants
 
+from app import checkZipcode
+
+#constants
 MAIN_COMMAND = "recycle"
 ZIP_CODE = "00000"
 
@@ -79,9 +81,9 @@ def get_responsev2(message):
                                     break
 
     if foundZip:
-        #TODO check for zipcode
         # if we have zip code
-        if True:
+        city_id = checkZipcode(zipcode)
+        if city_id:
             if foundItem:
                 # TODO get results for found item
                 response = "Results for recycling " + item + " in " + zipcode
