@@ -1,6 +1,7 @@
 import os
 import io
 import enchant
+import re
 
 #constants
 MAIN_COMMAND = "recycle"
@@ -24,6 +25,8 @@ def get_response(message):
 def get_responsev2(message):
     foundZip = False
     foundItem = False
+    itemTable = ""
+    itemColumn = ""
     zipcode = "00000"
     item = ""
     suggestedItem = ""
@@ -43,7 +46,8 @@ def get_responsev2(message):
                         zipcode = word
                     elif not foundItem and word.isalpha():
                         # check our list of items
-                        foundItem = item_found(word)
+                        foundItem, itemTable, itemColumn = item_found(word)
+
                         if not foundItem :
                             # record unknown words
                             unknownWords.append(word)
@@ -64,7 +68,7 @@ def get_responsev2(message):
 
                         if word.isalpha():
                             # check our list of items
-                            foundItem = item_found(word)
+                            foundItem, itemTable, itemColumn = item_found(word)
                             if (foundItem) :
                                 item = word
                                 break
@@ -83,10 +87,14 @@ def get_responsev2(message):
         city_id = checkZipcode(zipcode)
         if city_id:
             if foundItem:
-                # TODO get results for found item
-                response = "Results for recycling " + item + " in " + zipcode
-                #if not allowed
-                response = foundItem + "not recyclable curbside - visit earth911 to search for other options: http://search.earth911.com/?what=" + item + "&where=" + zipcode + "&list_filter=all&max_distance=25"
+                if itemTable and itemColumn:
+                    result = lookupItem(itemTable, itemColumn, city_id)
+                    if result:
+                        return result
+                     # TODO get results for found item
+                    #response = "Results for recycling " + item + " in " + zipcode
+                # found item that can't be recycled curbside
+                return item + "not recyclable curbside - visit earth911 to search for other options: http://search.earth911.com/?what=" + item + "&where=" + zipcode + "&list_filter=all&max_distance=25"
             elif foundSuggestion:
                 response = "We didn't get that. Did you mean to ask about " + suggestedItem + "?"
                 # TODO get results for suggested item
@@ -109,13 +117,25 @@ def get_responsev2(message):
 
 
 def item_found(item):
-    with io.open('items.txt', 'r') as file:
+    with io.open('items.tsv', 'r') as file:
         for line in file:
-                line = line.strip() #preprocess line
-                if line.lower() == item.lower():
-                    return True
+            line = line.strip() #preprocess line
+            line_arr = re.split(r'\t+', line)
+            print line_arr
+            if line_arr:
+                dictionary_item = line_arr[0]
+                print dictionary_item
+            if item.lower() == dictionary_item.lower():
+                print "equal stuff cool"
+                if len(line_arr) == 3:
+                    print "3 things wtf"
+                    return True, line_arr[1].strip(), line_arr[2].strip()
+                else :
+                    print "idk"
+                    return True, None, None
 
-    return False
+    print "i really dk"
+    return False, None, None
 
 def check_dictionary(word):
     foundSuggestion = False
@@ -133,4 +153,4 @@ def check_dictionary(word):
 
     return ""
 
-from app import checkZipcode
+from app import checkZipcode,lookupItem

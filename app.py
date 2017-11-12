@@ -25,6 +25,21 @@ def checkZipcode(zipcode):
     else:
         return None
 
+def lookupItem(tablename, columnname, city_id):
+    tablenames = ["plastic", "glass", "metal", "battery", "bulb", "paper", "electronic"]
+    print "did we get here??"
+    if tablename in tablenames:
+      print "we made it in"
+      print "SELECT" + columnname + " FROM "+tablename
+      cursor.execute("SELECT %s FROM %s WHERE city_id = %s", [columnname, tablename, city_id])
+      row = cursor.fetchone()
+      if row:
+        print "we made it out"
+        print row[0]
+        return row[0]
+      else:
+        return None
+
 @app.route("/")
 def home():
     return "Text (442)44GREEN for recycling info near you!"

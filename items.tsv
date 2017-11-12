@@ -1,0 +1,67 @@
+Aluminum Can	metal	aluminum_can
+Soda Can	metal	aluminum_can
+Aluminum Foil	metal	aluminum_foil
+Steel Can	metal	steel_can
+Tin Can metal	tin_can
+Plastic Jar	plastic	jar
+Plastic Jug	plastic	jug
+Plastic Bottle 	plastic	bottle
+Rigid Plastic 	plastic	rigid_plastic
+Magazines 	paper	magazine
+Books	paper	book
+Mixed Paper	paper	mixed_paper
+Paper bags 	paper	paper_bag
+Newspaper	paper	newspaper
+Phone books paper phone_book
+Paper Carton  paper	paper_carton
+Corrugated Cardboard  paper	corrugated_cardboard
+Cereal  paper corrugated_cardboard
+Cereal box  paper	corrugated_cardboard
+Car Battery battery car
+Button Battery  battery button
+Household Battery battery household
+Rechargable Battery battery recharagable
+Glass Jar glass	jar
+Glass Bottle  glass	bottle
+Incandescent Bulb bulb	 incandescent
+LED Bulb  bulb	 LED
+Fluorescent Bulb bulb	fluorescent
+Television  electronic  television
+Monitor electronic  monitor
+Laptop  electronic  laptop
+Desktop electronic  desktop
+Cell Phone  electronic  cell_phone
+Microwave electronic  microwave
+Aluminum Cans  metal	aluminum_can
+Steel Cans metal	steel_can
+Tin Cans metal	tin_can
+Plastic Jars plastic jar
+Plastic Jugs plastic jug
+Plastic Bottles  plastic bottle
+Gatorade  plastic bottle
+Gatorade bottle  plastic bottle
+Rigid Plastics plastic rigid_plastic
+Magazine paper	magazine
+Book paper	book
+Paper bag  paper	paper_bag
+Newspapers paper	newspaper
+Phone book paper	phone_book
+Paper Cartons  paper	paper_carton
+Car Batteries battery car
+Button Batteries  battery button
+Household Batteries battery household
+Rechargable Batteries battery recharagable
+Glass Jars glass	jar
+Glass Bottles  glass	bottle
+Incandescent Bulbs bulb	 incandescent
+LED Bulbs  bulb	 LED
+Fluorescent Bulbs bulb	fluorescent
+Televisions  electronic  television
+TV  electronic  television
+TVs  electronic  television
+Monitors electronic  monitor
+Laptops  electronic  laptop
+Desktops electronic  desktop
+Cell Phones  electronic  cell_phone
+Microwaves electronic  microwave
+
