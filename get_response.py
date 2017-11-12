@@ -2,8 +2,6 @@ import os
 import io
 import enchant
 
-from app import checkZipcode
-
 #constants
 MAIN_COMMAND = "recycle"
 ZIP_CODE = "00000"
@@ -134,3 +132,5 @@ def check_dictionary(word):
                 return suggestion
 
     return ""
+
+from app import checkZipcode

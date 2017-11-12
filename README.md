@@ -7,6 +7,10 @@ cd env/
 source bin/activate
 ```
 ### Dependencies to install:
+```
+env/bin/pip install flask flask-mysql flask-mysqldb twilio pyenchant
+```
+or
 
 ```
 pip install flask
@@ -15,6 +19,7 @@ pip install flask-mysqldb
 pip install twilio
 pip install pyenchant
 ```
+
 
 ### To run app:
 ```
