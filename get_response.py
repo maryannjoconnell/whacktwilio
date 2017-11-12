@@ -88,27 +88,28 @@ def get_responsev2(message):
         if city_id:
             if foundItem:
                 if itemTable and itemColumn:
+                    #result = lookupItem(itemTable, itemColumn, city_id)
                     result = lookupItem(itemTable, itemColumn, city_id)
+
                     if result:
-                        return result
-                     # TODO get results for found item
-                    #response = "Results for recycling " + item + " in " + zipcode
+                        return item + " can be recycled curbside in " + zipcode + "!"
+
                 # found item that can't be recycled curbside
-                return item + "not recyclable curbside - visit earth911 to search for other options: http://search.earth911.com/?what=" + item + "&where=" + zipcode + "&list_filter=all&max_distance=25"
+                return item + " not recyclable curbside - visit earth911 to search for other options: http://search.earth911.com/?what=" + item + "&where=" + zipcode + "&list_filter=all&max_distance=25"
             elif foundSuggestion:
-                response = "We didn't get that. Did you mean to ask about " + suggestedItem + "?"
-                # TODO get results for suggested item
-                # TODO concat responses
-                #if not allowed
-                response = suggestedItem + "not recyclable curbside - visit earth911 to search for other options: http://search.earth911.com/?what=" + item + "&where=" + zipcode + "&list_filter=all&max_distance=25"
-            else:
-                #TODO get all results - display as short list (or with emojis)
-                response = "Feeling lucky? https://www.google.com/search?btnI=1&q=recycling%20" + zipcode
-        else :
+                response = "We didn't get that. Did you mean to ask about " + suggestedItem + "? "
+                result = lookupItem(itemTable, itemColumn, city_id)
+
+                    if result:
+                        response = response + item + " can be recycled curbside in " + zipcode + "!"
+                        return response
+                    else:
+                        #if not allowed
+                        return suggestedItem + " not recyclable curbside - visit earth911 to search for other options: http://search.earth911.com/?what=" + item + "&where=" + zipcode + "&list_filter=all&max_distance=25"
+
             # fallback to I'm feeling lucky results
-                response = "Feeling lucky? https://www.google.com/search?btnI=1&q=recycling%20" + zipcode
+            response = "Feeling lucky? https://www.google.com/search?btnI=1&q=recycling%20" + zipcode
     elif foundItem:
-        # get tip for item
         response = "Try entering \"" + item + "\" followed by your zip code."
     else:
         response = "Not sure what you mean. Enter your zip code and what you want to recycle."
@@ -126,16 +127,12 @@ def item_found(item):
                 dictionary_item = line_arr[0]
                 print dictionary_item
             if item.lower() == dictionary_item.lower():
-                print "equal stuff cool"
                 if len(line_arr) == 3:
-                    print "3 things wtf"
                     return True, line_arr[1].strip(), line_arr[2].strip()
                 else :
-                    print "idk"
-                    return True, None, None
+                    return True, "", ""
 
-    print "i really dk"
-    return False, None, None
+    return False, "", ""
 
 def check_dictionary(word):
     foundSuggestion = False

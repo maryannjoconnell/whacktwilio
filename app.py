@@ -25,17 +25,29 @@ def checkZipcode(zipcode):
     else:
         return None
 
+#TODO enumerate tables
 def lookupItem(tablename, columnname, city_id):
     tablenames = ["plastic", "glass", "metal", "battery", "bulb", "paper", "electronic"]
-    print "did we get here??"
     if tablename in tablenames:
-      print "we made it in"
-      print "SELECT" + columnname + " FROM "+tablename
-      cursor.execute("SELECT %s FROM %s WHERE city_id = %s", [columnname, tablename, city_id])
+      if tablename == "plastic":
+        cursor.execute("SELECT %s FROM plastic WHERE city_id = %s", (columnname, city_id))
+      elif tablename == "glass":
+        cursor.execute("SELECT %s FROM glass WHERE city_id = %s", (columnname, city_id))
+      elif tablename == "metal":
+        cursor.execute("SELECT %s FROM metal WHERE city_id = %s", (columnname, city_id))
+      elif tablename == "battery":
+        cursor.execute("SELECT %s FROM battery WHERE city_id = %s", (columnname, city_id))
+      elif tablename == "bulb":
+        cursor.execute("SELECT %s FROM bulb WHERE city_id = %s", (columnname, city_id))
+      elif tablename == "paper":
+        cursor.execute("SELECT %s FROM paper WHERE city_id = %s", (columnname, city_id))
+      elif tablename == "electronic":
+          cursor.execute("SELECT %s FROM electronic WHERE city_id = %s", (columnname, city_id))
+      else:
+        return None
+
       row = cursor.fetchone()
       if row:
-        print "we made it out"
-        print row[0]
         return row[0]
       else:
         return None
