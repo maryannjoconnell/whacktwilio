@@ -91,7 +91,7 @@ def get_responsev2(message):
                     #result = lookupItem(itemTable, itemColumn, city_id)
                     result = lookupItem(itemTable, itemColumn, city_id)
 
-                    if result:
+                    if result and result == 1:
                         return item + " can be recycled curbside in " + zipcode + "!"
 
                 # found item that can't be recycled curbside
@@ -100,12 +100,12 @@ def get_responsev2(message):
                 response = "We didn't get that. Did you mean to ask about " + suggestedItem + "? "
                 result = lookupItem(itemTable, itemColumn, city_id)
 
-                    if result:
-                        response = response + item + " can be recycled curbside in " + zipcode + "!"
-                        return response
-                    else:
-                        #if not allowed
-                        return suggestedItem + " not recyclable curbside - visit earth911 to search for other options: http://search.earth911.com/?what=" + item + "&where=" + zipcode + "&list_filter=all&max_distance=25"
+                if result:
+                    response = response + item + " can be recycled curbside in " + zipcode + "!"
+                    return response
+                else:
+                    #if not allowed
+                    return suggestedItem + " not recyclable curbside - visit earth911 to search for other options: http://search.earth911.com/?what=" + item + "&where=" + zipcode + "&list_filter=all&max_distance=25"
 
             # fallback to I'm feeling lucky results
             response = "Feeling lucky? https://www.google.com/search?btnI=1&q=recycling%20" + zipcode
@@ -122,10 +122,8 @@ def item_found(item):
         for line in file:
             line = line.strip() #preprocess line
             line_arr = re.split(r'\t+', line)
-            print line_arr
             if line_arr:
                 dictionary_item = line_arr[0]
-                print dictionary_item
             if item.lower() == dictionary_item.lower():
                 if len(line_arr) == 3:
                     return True, line_arr[1].strip(), line_arr[2].strip()
